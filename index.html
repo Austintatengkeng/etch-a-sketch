@@ -19,11 +19,19 @@
             gridContainer.appendChild(div);
         }
 
-        const pixel = document.querySelector('.pixel');
+        const pixels = document.querySelectorAll('.pixel');
+
+        const randomNum = () => {
+            return Math.floor(Math.random() * 256);
+        }
 
         const changeToRandomColor = (event) => {
+            event.target.style.backgroundColor = `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
             
         }
+        pixels.forEach(pixel => {
+            pixel.addEventListener('mouseenter', changeToRandomColor);
+        })
     </script>
 </body>
 </html>
