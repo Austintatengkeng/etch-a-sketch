@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch a Sketch</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Etch a Sketch</h1>
+    <button id="sizeBtn">Set Grid</button>
     <div id="grid-container">
         
     </div>
     <script>
         const gridContainer = document.getElementById('grid-container');
+        const sizeBtn = document.getElementById('sizeBtn');
+        let gridSize = 16;
+        let interaction = 10;
 
-        for(let i = 1; i <= 16 * 16; i++){
-            const div = document.createElement('div');
-            div.classList.add('pixel');
-            gridContainer.appendChild(div);
+
+        //function to add grid with the desired size (1-100)
+        const addGrid = () => {
+            const pixelSize = 400 / gridSize; 
+            //loop that creates and adds each grid
+            for(let i = 1; i <= gridSize * gridSize; i++){
+                const div = document.createElement('div');
+                div.classList.add('pixel');
+                gridContainer.appendChild(div);
+                div.style.width = `${pixelSize}px`;
+                div.style.height = `${pixelSize}px`;
+            }
+            const pixels = document.querySelectorAll('.pixel');
+            pixels.forEach(pixel => {
+            pixel.addEventListener('mouseenter', changeToRandomColor);
+
+
+            interaction = 10;
+        });
         }
 
-        const pixels = document.querySelectorAll('.pixel');
+        
 
+        //generates random number for color RGB value
         const randomNum = () => {
             return Math.floor(Math.random() * 256);
         }
 
+        //changes background color for each grid
         const changeToRandomColor = (event) => {
-            event.target.style.backgroundColor = `rgb(${randomNum()}, ${randomNum()}, ${randomNum()})`;
-            
+            event.target.style.backgroundColor = `rgba(${randomNum()}, ${randomNum()}, ${randomNum()}, ${interaction}%)`;
+            interaction += 10;
         }
-        pixels.forEach(pixel => {
-            pixel.addEventListener('mouseenter', changeToRandomColor);
-        })
+        
+        //Button Event
+        const setGridSize = (event) => {
+            gridContainer.innerHTML = "";
+            gridSize = prompt("Grid Size (1-100)");
+            addGrid();
+        }
+
+        sizeBtn.addEventListener('click', setGridSize);
+
+        addGrid();
     </script>
 </body>
 </html>

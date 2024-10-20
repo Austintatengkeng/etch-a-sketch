@@ -1,3 +1,7 @@
+body{
+    text-align: center;
+}
+
 #grid-container{
     border: 3px solid black;
     display: flex;
@@ -5,11 +9,17 @@
     width: 400px;
     height: 400px;
     padding: 0;
+    margin: auto;
+}
+
+#sizeBtn {
+    margin: 10px;
+    height: 30px;
+    width: 80px;
+
 }
 
 .pixel{
     box-sizing: border-box;
-    width: calc(100% / 16);
-    height: calc(100% / 16);
     border: 1px solid black;
 }
