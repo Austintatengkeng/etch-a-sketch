@@ -8,10 +8,6 @@ This is a simple Etch a Sketch project built with HTML, CSS, and JavaScript. It 
 - **Random Color Generation**: Each time you hover over a pixel, its background color will change to a random RGB color.
 - **Progressive Color Change**: Each subsequent hover on a pixel results in a more intense color change.
 
-## Demo
-
-![Etch a Sketch Demo](demo-image-url)
-
 ## Installation
 
 1. Clone the repository:
